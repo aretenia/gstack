@@ -56,9 +56,9 @@
     "cross-spawn": "^7.0.6",
     "diff": "^9.0.0",
     "html-to-docx": "1.8.0",
-    "marked": "^18.0.9",
-    "playwright": "^1.62.1",
-    "socks": "^2.8.9"
+    "marked": "^18.0.13",
+    "playwright": "1.62.1",
+    "socks": "^2.8.10"
   },
   "engines": {
     "bun": ">=1.0.0"
@@ -74,15 +74,18 @@
     "devtools"
   ],
   "devDependencies": {
-    "@anthropic-ai/claude-agent-sdk": "0.2.117",
-    "@anthropic-ai/sdk": "^0.78.0",
+    "@anthropic-ai/claude-agent-sdk": "0.2.141",
+    "@anthropic-ai/sdk": "^0.93.0",
     "xterm": "5",
     "xterm-addon-fit": "^0.8.0"
   },
   "overrides": {
-    "adm-zip": "^0.6.0"
+    "adm-zip": "^0.6.1",
+    "sharp": "^0.35.4",
+    "image-size": "^2.0.4"
   },
   "patchedDependencies": {
-    "playwright-core@1.62.1": "patches/playwright-core@1.62.1.patch"
+    "playwright-core@1.62.1": "patches/playwright-core@1.62.1.patch",
+    "html-to-docx@1.8.0": "patches/html-to-docx@1.8.0.patch"
   }
 }

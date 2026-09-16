@@ -54,17 +54,21 @@ const PRINT_SANS =
   '"Noto Sans CJK JP", "Microsoft YaHei", "Apple Color Emoji", ' +
   '"Segoe UI Emoji", "Noto Color Emoji", sans-serif';
 
-mermaid.initialize({
+const renderConfig = {
   startOnLoad: false,
-  securityLevel: "strict",
-  theme: "neutral",
+  securityLevel: "strict" as const,
+  theme: "neutral" as const,
   fontFamily: PRINT_SANS,
   htmlLabels: false,
   flowchart: { htmlLabels: false },
-});
+};
+mermaid.initialize(renderConfig);
 
 window.__renderMermaid = async (id: string, text: string): Promise<string> => {
   if (!/^[A-Za-z][\w-]*$/.test(id)) throw new Error(`invalid mermaid render id: ${id}`);
+  // The converter shares Mermaid and resets its global configuration.
+  // Restore strict vector labels and print fonts for every rendering call.
+  mermaid.initialize(renderConfig);
   const { svg } = await mermaid.render(id, text);
   return svg;
 };
